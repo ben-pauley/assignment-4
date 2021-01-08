@@ -11,29 +11,28 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-6">
                     View Highscores
                 </div>
-                <div class="col-sm-8"></div>
-                <div class="col-sm-2 text-right">
+                <div class="col-sm-6 text-right">
                     Time: 60
                 </div>
             </div>
             <br><br><br>
             <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+                <div class="col-md-3 col-sm-2"></div>
+                <div class="col-md-6 col-sm-8" id="mainDiv">
                     <h2 class="text-center" id="questionHead">
                         Coding Quiz Challenge
                     </h2>
-                    <p class="text-center">
+                    <p class="text-center" id="instructions">
                         Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will deduct 10 seconds from your time/score.
                     </p>
-                    <div class="text-center">
+                    <div class="text-center" id="startQuizBtnDiv">
                         <button type="button" class="btn btn-primary" id="startQuizBtn">Start Quiz</button>
                     </div>
                 </div>
-                <div class="col-sm-4"></div>
+                <div class="col-md-3 col-sm-2"></div>
             </div>
         </div>
         <script src="script.js"></script>
