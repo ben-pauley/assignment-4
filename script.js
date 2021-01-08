@@ -3,7 +3,18 @@ document.getElementById("startQuizBtn").addEventListener("click", question1);
 var a = document.getElementById("highscoresLink");
 a.addEventListener("click", highscores);
 
+function startTimer(){
+    var seconds = 60;
+    document.getElementById("timer").textContent = "Time: " + seconds;
+    var timer = setInterval(function(){
+        seconds--;
+        document.getElementById("timer").textContent = "Time: " + seconds;
+        if (seconds <=0) clearInterval(timer);
+    }, 1000);
+}
+
 function question1(){
+    startTimer();
     //the main div to hold everything question related
     var mainDiv = document.getElementById("mainDiv");
     //hide previous body content
