@@ -151,56 +151,31 @@ function generateQuestion(questionNumber){
     
     var newQuestionNumber = questionNumber + 1;
     
-    if (newQuestionNumber !== 6)
-    {
-        option1.addEventListener("click", function(){
-            if (option1.getAttribute("value") === "wrong"){
-                startTimer(seconds - 10);
-                questionRight = false;
-            }
-            else{
-                questionRight = true;
-            }
-            generateQuestion(newQuestionNumber);
-        });
-        option2.addEventListener("click", function(){
-            if (option2.getAttribute("value") === "wrong"){
-                startTimer(seconds - 10);
-                questionRight = false;
-            }
-            else{
-                questionRight = true;
-            }
-            generateQuestion(newQuestionNumber);
-        });
-        option3.addEventListener("click", function(){
-            if (option3.getAttribute("value") === "wrong"){
-                startTimer(seconds - 10);
-                questionRight = false;
-            }
-            else{
-                questionRight = true;
-            }
-            generateQuestion(newQuestionNumber);
-        });
-        option4.addEventListener("click", function(){
-            if (option4.getAttribute("value") === "wrong"){
-                startTimer(seconds - 10);
-                questionRight = false;
-            }
-            else{
-                questionRight = true;
-            }
-            generateQuestion(newQuestionNumber);
-        });
+    if (newQuestionNumber !== 6) {
+        answerButtonClicked(option1, newQuestionNumber);
+        answerButtonClicked(option2, newQuestionNumber);
+        answerButtonClicked(option3, newQuestionNumber);
+        answerButtonClicked(option4, newQuestionNumber);
     }
-    else
-    {
+    else {
         option1.addEventListener("click", gameOver);
         option2.addEventListener("click", gameOver);
         option3.addEventListener("click", gameOver);
         option4.addEventListener("click", gameOver);
     }
+}
+
+function answerButtonClicked(optionNum, newQuestionNumber){
+    optionNum.addEventListener("click", function(){
+        if (optionNum.getAttribute("value") === "wrong"){
+            startTimer(seconds - 10);
+            questionRight = false;
+        }
+        else{
+            questionRight = true;
+        }
+        generateQuestion(newQuestionNumber);
+    });
 }
 
 function correctOrIncorrectMessage(){
