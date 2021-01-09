@@ -212,12 +212,7 @@ function gameOver(){
     var inputBox = document.createElement("input");
     var submitButton = document.createElement("button");
 
-    if (score <= 0) {
-        gameOverTitle.textContent = "Time's up!";
-    }
-    else {
-        gameOverTitle.textContent = "Quiz complete!";
-    }
+    gameOverTitlePicker(gameOverTitle, score);
 
     finalScore.textContent = "Your final score is " + score;
     formLabel.textContent = "Enter initials: ";
@@ -253,6 +248,15 @@ function gameOver(){
     });
 
     // submitButton.addEventListener("click", highscores);
+}
+
+function gameOverTitlePicker(title, score){
+    if (score <= 0) {
+        title.textContent = "Time's up!";
+    }
+    else {
+        title.textContent = "Quiz complete!";
+    }
 }
 
 function highscores(newInitials, newScore){
