@@ -1,8 +1,5 @@
 document.getElementById("startQuizBtn").addEventListener("click", beginQuiz);
 
-var a = document.getElementById("highscoresLink");
-a.addEventListener("click", highscores);
-
 var isTimerPaused = false;
 var seconds = 0;
 var mainDiv = document.getElementById("mainDiv");
@@ -50,7 +47,6 @@ function generateQuestion(questionNumber){
     var q4Answers = ["Wrong", "Correct", "Wrong", "Wrong"]
     var q5Answers = ["Wrong", "Wrong", "Correct", "Wrong"]
 
-    //add content to elements
     questionHead.textContent = questions[questionNumber - 1];
 
     function finalQuestionAnswered(){
@@ -113,28 +109,25 @@ function generateQuestion(questionNumber){
             option4.setAttribute("value", "wrong");
             break;
     }
-    //add ids to elements
+
     questionHead.setAttribute("id", "questionHead");
     option1.setAttribute("id", "option1");
     option2.setAttribute("id", "option2");
     option3.setAttribute("id", "option3");
     option4.setAttribute("id", "option4");
-    //add types to buttons
     option1.setAttribute("type", "button");
     option2.setAttribute("type", "button");
     option3.setAttribute("type", "button");
     option4.setAttribute("type", "button");
-    //add classes to buttons
     option1.setAttribute("class", "btn btn-primary");
     option2.setAttribute("class", "btn btn-primary");
     option3.setAttribute("class", "btn btn-primary");
     option4.setAttribute("class", "btn btn-primary");
-    //add style to buttons
     option1.style.marginBottom = "5px";
     option2.style.marginBottom = "5px";
     option3.style.marginBottom = "5px";
     option4.style.marginBottom = "5px";
-    //append elements to page
+    
     option1Div.appendChild(option1);
     option2Div.appendChild(option2);
     option3Div.appendChild(option3);
@@ -213,7 +206,6 @@ function gameOver(){
     var submitButton = document.createElement("button");
 
     gameOverTitlePicker(gameOverTitle, score);
-
     finalScore.textContent = "Your final score is " + score;
     formLabel.textContent = "Enter initials: ";
     submitButton.textContent = "Submit";
@@ -318,16 +310,7 @@ function homepage(){
     startQuizBtn.addEventListener("click", beginQuiz);
 }
 
-// function createOptionButton(divName, buttonName, buttonText){
-//     var buttonContent = JSON.stringify(buttonText);
-//     var divName = document.createElement("div");
-//     var buttonName = document.createElement("button");
-
-//     buttonName.textContent = buttonContent;
-
-//     buttonName.setAttribute("type", "button");
-//     buttonName.setAttribute("class", "btn btn-primary");
-//     buttonName.style.marginBottom = "5px";
-
-    
-// }
+function linkToHighscoresPage(){
+    var a = document.getElementById("highscoresLink");
+    a.addEventListener("click", highscores);
+}
