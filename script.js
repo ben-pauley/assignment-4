@@ -145,27 +145,9 @@ function generateQuestion(questionNumber){
     mainDiv.appendChild(option3Div);
     mainDiv.appendChild(option4Div);
 
-    if (questionNumber > 1) {
-        var correctOrIncorrect = document.createElement("p");
-
-        if (questionRight === true) {
-            correctOrIncorrect.textContent = "Correct";
-        }
-        else {
-            correctOrIncorrect.textContent = "Incorrect"
-        }
-
-        correctOrIncorrect.setAttribute("class", "border-top border-dark");
-
-        mainDiv.appendChild(correctOrIncorrect);
-
-        function hideMessage(){
-            correctOrIncorrect.style.display = " none";
-        }
-        window.setTimeout(hideMessage, 2500);
-    }
-
-    
+    if (questionNumber > 1){
+        correctOrIncorrectMessage();
+    };
     
     var newQuestionNumber = questionNumber + 1;
     
@@ -219,6 +201,26 @@ function generateQuestion(questionNumber){
         option3.addEventListener("click", gameOver);
         option4.addEventListener("click", gameOver);
     }
+}
+
+function correctOrIncorrectMessage(){
+    var correctOrIncorrect = document.createElement("p");
+
+    if (questionRight === true) {
+        correctOrIncorrect.textContent = "Correct";
+    }
+    else {
+        correctOrIncorrect.textContent = "Incorrect"
+    }
+
+    correctOrIncorrect.setAttribute("class", "border-top border-dark");
+
+    mainDiv.appendChild(correctOrIncorrect);
+
+    function hideMessage(){
+        correctOrIncorrect.style.display = " none";
+    }
+    window.setTimeout(hideMessage, 2500);
 }
 
 function gameOver(){
