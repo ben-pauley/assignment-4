@@ -269,8 +269,10 @@ function gameOver(){
     submitForm.addEventListener("submit", function(e){
         e.preventDefault();
         var initials = submitForm.querySelector('input[type="text"]').value;
-        initials = initials.toUpperCase();
-        highscores(initials, score);
+        if (initials !== ""){
+            initials = initials.toUpperCase();
+            highscores(initials, score);
+        }
     });
 
     // submitButton.addEventListener("click", highscores);
