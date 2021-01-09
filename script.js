@@ -3,16 +3,18 @@ document.getElementById("startQuizBtn").addEventListener("click", beginQuiz);
 var a = document.getElementById("highscoresLink");
 a.addEventListener("click", highscores);
 
+var isTimerPaused = false;
+var seconds = 0;
+var mainDiv = document.getElementById("mainDiv");
+
 function beginQuiz(){
     startTimer();
     generateQuestion(1);
 }
 
-var isTimerPaused = false;
-var seconds = 60;
-var mainDiv = document.getElementById("mainDiv");
-
 function startTimer(){
+    seconds = 60;
+    isTimerPaused = false;
     document.getElementById("timer").textContent = "Time: " + seconds;
     var timer = setInterval(function(){
         if(!isTimerPaused){
@@ -197,7 +199,7 @@ function gameOver(){
     submitForm.addEventListener("submit", function(e){
         e.preventDefault();
         var initials = submitForm.querySelector('input[type="text"]').value;
-        console.log(initials);
+        initials = initials.toUpperCase();
         highscores(initials, score);
     });
 
@@ -210,13 +212,61 @@ function highscores(newInitials, newScore){
     var highscoresTitle = document.createElement("h2");
     var scoreList = document.createElement("ol");
     var score1 = document.createElement("li");
+    var homepageButton = document.createElement("button");
+    var clearScores = document.createElement("button");
 
     highscoresTitle.textContent = "Highscores";
     score1.textContent = newInitials + ": " + newScore;
+    homepageButton.textContent = "Go Back";
+    clearScores.textContent = "Clear Highscores";
+
+    homepageButton.setAttribute("class", "btn btn-primary");
+    clearScores.setAttribute("class", "btn btn-primary");
+
+    homepageButton.style.marginRight = "5px";
 
     scoreList.appendChild(score1);
     mainDiv.appendChild(highscoresTitle);
     mainDiv.appendChild(scoreList);
+    mainDiv.appendChild(homepageButton);
+    mainDiv.appendChild(clearScores);
+
+    homepageButton.addEventListener("click", homepage);
+}
+
+function homepage(){
+    mainDiv.textContent = "";
+
+    seconds = 0;
+    document.getElementById("timer").textContent = "Time: " + seconds;
+
+    var title = document.createElement("h2");
+    var instructions = document.createElement("p");
+    var startQuizBtnDiv = document.createElement("div");
+    var startQuizBtn = document.createElement("button");
+
+    title.textContent = "Coding Quiz Challenge";
+    instructions.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will deduct 10 seconds from your time/score.";
+    startQuizBtn.textContent = "Start Quiz";
+
+    title.setAttribute("class", "text-center");
+    instructions.setAttribute("class", "text-center");
+    startQuizBtnDiv.setAttribute("class", "text-center");
+    startQuizBtn.setAttribute("class", "btn btn-primary");
+
+    title.setAttribute("id", "title");
+    instructions.setAttribute("id", "instructions");
+    startQuizBtnDiv.setAttribute("id", "startQuizBtnDiv");
+    startQuizBtn.setAttribute("id", "startQuizBtn");
+
+    startQuizBtn.setAttribute("type", "button");
+
+    startQuizBtnDiv.appendChild(startQuizBtn);
+    mainDiv.appendChild(title);
+    mainDiv.appendChild(instructions);
+    mainDiv.appendChild(startQuizBtnDiv);
+
+    startQuizBtn.addEventListener("click", beginQuiz);
 }
 
 // function createOptionButton(divName, buttonName, buttonText){
