@@ -26,7 +26,6 @@ function startTimer(newSeconds){
                 gameOver();
             }
         }
-        
     }, 1000);
 }
 
@@ -156,8 +155,17 @@ function generateQuestion(questionNumber){
             correctOrIncorrect.textContent = "Incorrect"
         }
 
+        correctOrIncorrect.setAttribute("class", "border-top border-dark");
+
         mainDiv.appendChild(correctOrIncorrect);
+
+        function hideMessage(){
+            correctOrIncorrect.style.display = " none";
+        }
+        window.setTimeout(hideMessage, 2500);
     }
+
+    
     
     var newQuestionNumber = questionNumber + 1;
     
