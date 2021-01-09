@@ -221,11 +221,8 @@ function gameOver(){
     gameOverTitle.setAttribute("id", "gameOverTitle");
     finalScore.setAttribute("id", "finalScore");
     initialsForm.setAttribute("id", "initialsForm");
-
     inputBox.setAttribute("type", "text");
-
     submitButton.setAttribute("class", "btn btn-primary");
-
     formLabel.style.marginRight = "5px";
     inputBox.style.marginRight = "5px";
     gameOverTitle.style.marginBottom = "20px";
@@ -237,6 +234,10 @@ function gameOver(){
     initialsForm.appendChild(inputBox);
     initialsForm.appendChild(submitButton);
 
+    initialsFormSubmission(score);
+}
+
+function initialsFormSubmission(score){
     var submitForm = document.forms["initialsForm"];
     submitForm.addEventListener("submit", function(e){
         e.preventDefault();
@@ -246,8 +247,6 @@ function gameOver(){
             highscores(initials, score);
         }
     });
-
-    // submitButton.addEventListener("click", highscores);
 }
 
 function gameOverTitlePicker(title, score){
@@ -275,7 +274,6 @@ function highscores(newInitials, newScore){
 
     homepageButton.setAttribute("class", "btn btn-primary");
     clearScores.setAttribute("class", "btn btn-primary");
-
     homepageButton.style.marginRight = "5px";
 
     scoreList.appendChild(score1);
@@ -306,12 +304,10 @@ function homepage(){
     instructions.setAttribute("class", "text-center");
     startQuizBtnDiv.setAttribute("class", "text-center");
     startQuizBtn.setAttribute("class", "btn btn-primary");
-
     title.setAttribute("id", "title");
     instructions.setAttribute("id", "instructions");
     startQuizBtnDiv.setAttribute("id", "startQuizBtnDiv");
     startQuizBtn.setAttribute("id", "startQuizBtn");
-
     startQuizBtn.setAttribute("type", "button");
 
     startQuizBtnDiv.appendChild(startQuizBtn);
