@@ -10,6 +10,7 @@ function beginQuiz(){
 
 var isTimerPaused = false;
 var seconds = 60;
+var mainDiv = document.getElementById("mainDiv");
 
 function startTimer(){
     document.getElementById("timer").textContent = "Time: " + seconds;
@@ -27,8 +28,6 @@ function startTimer(){
 }
 
 function generateQuestion(questionNumber){
-    //the main div to hold everything question related
-    var mainDiv = document.getElementById("mainDiv");
     //hide previous body content
     mainDiv.textContent = "";
     //create each of the elements
@@ -153,25 +152,37 @@ function generateQuestion(questionNumber){
 function gameOver(){
     isTimerPaused = true;
 
-    var mainDiv = document.getElementById("mainDiv");
-
     mainDiv.textContent = "";
 
     var gameOverTitle = document.createElement("h3");
     var finalScore = document.createElement("p");
-    var submitScore = document.createElement("form");
+    var initialsForm = document.createElement("form");
+    var formLabel = document.createElement("label");
+    var inputBox = document.createElement("input");
+    var submitButton = document.createElement("button");
 
     gameOverTitle.textContent = "Quiz complete!";
     finalScore.textContent = "Your final score is " + seconds;
-    submitScore.textContent = "Enter initials: ";
+    formLabel.textContent = "Enter initials: ";
+    submitButton.textContent = "Submit";
 
     gameOverTitle.setAttribute("id", "gameOverTitle");
     finalScore.setAttribute("id", "finalScore");
-    submitScore.setAttribute("id", "submitScore");
+    initialsForm.setAttribute("id", "initialsForm");
+
+    submitButton.setAttribute("class", "btn btn-primary");
+
+    formLabel.style.marginRight = "5px";
+    inputBox.style.marginRight = "5px";
+    gameOverTitle.style.marginBottom = "20px";
+
 
     mainDiv.appendChild(gameOverTitle);
     mainDiv.appendChild(finalScore);
-    mainDiv.appendChild(submitScore);
+    mainDiv.appendChild(initialsForm);
+    initialsForm.appendChild(formLabel);
+    initialsForm.appendChild(inputBox);
+    initialsForm.appendChild(submitButton);
 
     var score = document.getElementById(timer).textContent;
 }
