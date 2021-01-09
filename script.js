@@ -6,14 +6,15 @@ a.addEventListener("click", highscores);
 var isTimerPaused = false;
 var seconds = 0;
 var mainDiv = document.getElementById("mainDiv");
+var questionRight = true;
 
 function beginQuiz(){
-    startTimer();
+    startTimer(60);
     generateQuestion(1);
 }
 
-function startTimer(){
-    seconds = 60;
+function startTimer(newSeconds){
+    seconds = newSeconds;
     isTimerPaused = false;
     document.getElementById("timer").textContent = "Time: " + seconds;
     var timer = setInterval(function(){
@@ -64,33 +65,53 @@ function generateQuestion(questionNumber){
     switch (questions[questionNumber - 1]) {
         case questions[0]:
             option1.textContent = q1Answers[0];
+            option1.setAttribute("value", "wrong");
             option2.textContent = q1Answers[1];
+            option2.setAttribute("value", "correct");
             option3.textContent = q1Answers[2];
+            option3.setAttribute("value", "wrong");
             option4.textContent = q1Answers[3];
+            option4.setAttribute("value", "wrong");
             break;
         case questions[1]:
             option1.textContent = q2Answers[0];
+            option1.setAttribute("value", "wrong");
             option2.textContent = q2Answers[1];
+            option2.setAttribute("value", "wrong");
             option3.textContent = q2Answers[2];
+            option3.setAttribute("value", "wrong");
             option4.textContent = q2Answers[3];
+            option4.setAttribute("value", "correct");
             break;
         case questions[2]:
             option1.textContent = q3Answers[0];
+            option1.setAttribute("value", "correct");
             option2.textContent = q3Answers[1];
+            option2.setAttribute("value", "wrong");
             option3.textContent = q3Answers[2];
+            option3.setAttribute("value", "wrong");
             option4.textContent = q3Answers[3];
+            option4.setAttribute("value", "wrong");
             break;
         case questions[3]:
             option1.textContent = q4Answers[0];
+            option1.setAttribute("value", "wrong");
             option2.textContent = q4Answers[1];
+            option2.setAttribute("value", "correct");
             option3.textContent = q4Answers[2];
+            option3.setAttribute("value", "wrong");
             option4.textContent = q4Answers[3];
+            option4.setAttribute("value", "wrong");
             break;
         case questions[4]:
             option1.textContent = q5Answers[0];
+            option1.setAttribute("value", "wrong");
             option2.textContent = q5Answers[1];
+            option2.setAttribute("value", "wrong");
             option3.textContent = q5Answers[2];
+            option3.setAttribute("value", "correct");
             option4.textContent = q5Answers[3];
+            option4.setAttribute("value", "wrong");
             break;
     }
     //add ids to elements
@@ -124,21 +145,62 @@ function generateQuestion(questionNumber){
     mainDiv.appendChild(option2Div);
     mainDiv.appendChild(option3Div);
     mainDiv.appendChild(option4Div);
+
+    if (questionNumber > 1) {
+        var correctOrIncorrect = document.createElement("p");
+
+        if (questionRight === true) {
+            correctOrIncorrect.textContent = "Correct";
+        }
+        else {
+            correctOrIncorrect.textContent = "Incorrect"
+        }
+
+        mainDiv.appendChild(correctOrIncorrect);
+    }
     
     var newQuestionNumber = questionNumber + 1;
     
     if (newQuestionNumber !== 6)
     {
         option1.addEventListener("click", function(){
+            if (option1.getAttribute("value") === "wrong"){
+                startTimer(seconds - 10);
+                questionRight = false;
+            }
+            else{
+                questionRight = true;
+            }
             generateQuestion(newQuestionNumber);
         });
         option2.addEventListener("click", function(){
+            if (option2.getAttribute("value") === "wrong"){
+                startTimer(seconds - 10);
+                questionRight = false;
+            }
+            else{
+                questionRight = true;
+            }
             generateQuestion(newQuestionNumber);
         });
         option3.addEventListener("click", function(){
+            if (option3.getAttribute("value") === "wrong"){
+                startTimer(seconds - 10);
+                questionRight = false;
+            }
+            else{
+                questionRight = true;
+            }
             generateQuestion(newQuestionNumber);
         });
         option4.addEventListener("click", function(){
+            if (option4.getAttribute("value") === "wrong"){
+                startTimer(seconds - 10);
+                questionRight = false;
+            }
+            else{
+                questionRight = true;
+            }
             generateQuestion(newQuestionNumber);
         });
     }
