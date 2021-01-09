@@ -154,6 +154,8 @@ function gameOver(){
 
     mainDiv.textContent = "";
 
+    var score = seconds;
+
     var gameOverTitle = document.createElement("h3");
     var finalScore = document.createElement("p");
     var initialsForm = document.createElement("form");
@@ -161,8 +163,14 @@ function gameOver(){
     var inputBox = document.createElement("input");
     var submitButton = document.createElement("button");
 
-    gameOverTitle.textContent = "Quiz complete!";
-    finalScore.textContent = "Your final score is " + seconds;
+    if (score <= 0) {
+        gameOverTitle.textContent = "Time's up!";
+    }
+    else {
+        gameOverTitle.textContent = "Quiz complete!";
+    }
+
+    finalScore.textContent = "Your final score is " + score;
     formLabel.textContent = "Enter initials: ";
     submitButton.textContent = "Submit";
 
@@ -170,12 +178,13 @@ function gameOver(){
     finalScore.setAttribute("id", "finalScore");
     initialsForm.setAttribute("id", "initialsForm");
 
+    inputBox.setAttribute("type", "text");
+
     submitButton.setAttribute("class", "btn btn-primary");
 
     formLabel.style.marginRight = "5px";
     inputBox.style.marginRight = "5px";
     gameOverTitle.style.marginBottom = "20px";
-
 
     mainDiv.appendChild(gameOverTitle);
     mainDiv.appendChild(finalScore);
@@ -184,22 +193,30 @@ function gameOver(){
     initialsForm.appendChild(inputBox);
     initialsForm.appendChild(submitButton);
 
-    var score = document.getElementById(timer).textContent;
+    var submitForm = document.forms["initialsForm"];
+    submitForm.addEventListener("submit", function(e){
+        e.preventDefault();
+        var initials = submitForm.querySelector('input[type="text"]').value;
+        console.log(initials);
+        highscores(initials, score);
+    });
+
+    // submitButton.addEventListener("click", highscores);
 }
 
-function highscores(){
-    var mainDiv = document.getElementById("mainDiv");
-
-    document.getElementById("gameOverTitle").hidden = true;
-    document.getElementById("finalScore").hidden = true;
-    document.getElementById("submitScore").hidden = true;
-    document.getElementById("viewHighscores").hidden = true;
-    document.getElementById("timer").hidden = true;
+function highscores(newInitials, newScore){
+    mainDiv.textContent = "";
 
     var highscoresTitle = document.createElement("h2");
-    var highscoreList = document.createElement("ol");
+    var scoreList = document.createElement("ol");
+    var score1 = document.createElement("li");
 
-    return false;
+    highscoresTitle.textContent = "Highscores";
+    score1.textContent = newInitials + ": " + newScore;
+
+    scoreList.appendChild(score1);
+    mainDiv.appendChild(highscoresTitle);
+    mainDiv.appendChild(scoreList);
 }
 
 // function createOptionButton(divName, buttonName, buttonText){
