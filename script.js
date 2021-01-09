@@ -8,16 +8,21 @@ function beginQuiz(){
     generateQuestion(1);
 }
 
+var isTimerPaused = false;
+var seconds = 60;
+
 function startTimer(){
-    var seconds = 60;
     document.getElementById("timer").textContent = "Time: " + seconds;
     var timer = setInterval(function(){
-        seconds--;
-        document.getElementById("timer").textContent = "Time: " + seconds;
-        if ((seconds <= 0) || (finalQuestionAnswered() === true)){
-            clearInterval(timer);
-            gameOver();
+        if(!isTimerPaused){
+            seconds--;
+            document.getElementById("timer").textContent = "Time: " + seconds;
+            if ((seconds <= 0)){
+                clearInterval(timer);
+                gameOver();
+            }
         }
+        
     }, 1000);
 }
 
@@ -146,6 +151,8 @@ function generateQuestion(questionNumber){
 }
 
 function gameOver(){
+    isTimerPaused = true;
+
     var mainDiv = document.getElementById("mainDiv");
 
     mainDiv.textContent = "";
@@ -155,7 +162,7 @@ function gameOver(){
     var submitScore = document.createElement("form");
 
     gameOverTitle.textContent = "Quiz complete!";
-    finalScore.textContent = "Your final score is ";
+    finalScore.textContent = "Your final score is " + seconds;
     submitScore.textContent = "Enter initials: ";
 
     gameOverTitle.setAttribute("id", "gameOverTitle");
