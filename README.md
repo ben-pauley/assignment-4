@@ -13,7 +13,7 @@ This project was completed using Visual Studio Code and I tested the website usi
 
 ## Screenshot of Main Function
 
-![main function code](/assets/"Screenshot 2021-01-10"?raw=true at 23.03.40.png)
+![deployed application](/assets/deployedApplication.png?raw=true)
 
 ## Conclusion
 
