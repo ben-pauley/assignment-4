@@ -288,7 +288,9 @@ function initialsFormSubmission(score){
 
 function linkToHighscoresPage(){
     var a = document.getElementById("highscoresLink");
-    a.addEventListener("click", generateHighscoresPage);
+    a.addEventListener("click", function(){
+        generateHighscoresPage("placeholder", "placeholder");
+    });
 }
 
 function startTimer(newSeconds){
