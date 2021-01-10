@@ -11,7 +11,7 @@ Nothing is required to install my project, but the project is deployed live at t
 
 This project was completed using Visual Studio Code and I tested the website using Google Chrome. The assignment was largely completed using JavaScript functions
 
-## Screenshot of Main Function
+## Screenshot of Deployed Application
 
 ![deployed application](/assets/deployedApplication.png?raw=true)
 
