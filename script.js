@@ -48,14 +48,6 @@ function generateQuestion(questionNumber){
     var q5Answers = ["Wrong", "Wrong", "Correct", "Wrong"]
 
     questionHead.textContent = questions[questionNumber - 1];
-
-    function finalQuestionAnswered(){
-        var finalQuestion = false;
-        if (questions[questionNumber] === questions[4]){
-            finalQuestion = true;
-        }
-        return finalQuestion;
-    }
     
     switch (questions[questionNumber - 1]) {
         case questions[0]:
