@@ -1,6 +1,7 @@
-# assignment-2
+# assignment-4
 
 ## My Repository
+
 In this GitHub repository, you will find my completed assignment for week 5 of the programme. My task was to create an interactive timed coding quiz with multiple choice questions with a clean, polished and responsive user interface. I believe I was successful in meeting the vast majority of the criteria set, though I didn't quite complete the highscore page.
 
 ## Installation
